@@ -136,6 +136,7 @@ plot(sim_residuals)
 
 ## 2h. 
 ```{r}
+#| label: interactive_model_plot
 # creating new object with predictions from interactive model
 mod_preds <- ggpredict(model_intereactive, 
                        terms = c("height_cm [all]", "scientific_name"))
@@ -153,9 +154,9 @@ ggplot(mod_preds, aes( x = x,
   # third layer: geom point with nests_clean data
   geom_point(data = nests_clean, 
               aes( x = height_cm,
-                   y = case_control, 
-                   color = scientific_name), # coloring by scientific names
-              alpha = 0.4, 
+                   y = case_control), 
+             color = "grey30", # coloring by scientific names
+             alpha = 0.4, 
              size = 1.5) +
   # separating the panels by type of ant
   facet_wrap (~group) +
@@ -175,6 +176,28 @@ ggplot(mod_preds, aes( x = x,
     legend.position = "none",
     strip.text = element_text(face = "italic", size = 11),
     axis.title = element_text(size = 12))
+```
+
+## 2i.
+Figure 1. Species of ant and height of tree influence nesting probability. Separate panels represent different species of ants (left panel is C. sjostedti, middle panel is C. mimosae, and right panel is C. nigriceps).  Transparent, grey points represent individual data observations of % probability of nesting (y- axes) from tree height (cm, x-axes) and ant species. Central, opaque line (red, blue, or green [from left to right]) represents interactive logistic model predictions of probability of nesting. Wide, transparent ribbon around line (green, red, blue [left to right]) represents 95% confidence interval for each prediction. 
+Data from: Lujan et al. in 2023. https://doi.org/10.5281/zenodo.8373322
+
+## 2j.
+```{r}
+# making new object with tree height of 600 cm from 
+max_height_data <- data.frame(
+  height_cm = c(600, 600, 600),
+  scientific_name = factor(c("Crematogaster sjostedti", "Crematogaster mimosae", "Crematogaster nigriceps"),
+                           levels = c("Crematogaster sjostedti", "Crematogaster mimosae", "Crematogaster nigriceps")))
+
+# Calculate predicted probabilities with standard errors
+predicted_at_600 <- predict(model_intereactive, 
+                            newdata = max_height_data, 
+                            type = "response")
+
+# Bind predictions to the labels for clear reading
+cbind(max_height_data, 
+      predicted_probability = predicted_at_600)
 ```
 
 
