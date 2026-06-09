@@ -127,10 +127,55 @@ The best model as determined by Akaike's Information Criterion (AIC) is the inte
 
 ## 2g. 
 ```{r}
-#| label: cheching_diaganostics
+#| label: checking_diaganostics
 # simulate residuals for interactive model
 sim_residuals <- simulateResiduals(fittedModel = model_intereactive, n = 250)
 # plotting diagnostics
 plot(sim_residuals)
 ```
+
+## 2h. 
+```{r}
+# creating new object with predictions from interactive model
+mod_preds <- ggpredict(model_intereactive, 
+                       terms = c("height_cm [all]", "scientific_name"))
+# base layer: ggplot with predictions data
+ggplot(mod_preds, aes( x = x,
+                       y = predicted))+ 
+  # first layer: geom ribbon to show confidence intervals for each group
+  geom_ribbon(aes (ymin = conf.low,
+                    ymax = conf.high,
+                    fill = group),
+              alpha = 0.4) + 
+  # second layer: geom line for the model predictions
+  geom_line(aes(color = group), 
+                size = 0.9)+ 
+  # third layer: geom point with nests_clean data
+  geom_point(data = nests_clean, 
+              aes( x = height_cm,
+                   y = case_control, 
+                   color = scientific_name), # coloring by scientific names
+              alpha = 0.4, 
+             size = 1.5) +
+  # separating the panels by type of ant
+  facet_wrap (~group) +
+  # adjusting color palettes for each panel
+  scale_color_brewer (palette = "Set1") +
+  scale_fill_brewer(palette = "Set2") +
+  # adding labels for x- and y- axes
+  labs(
+    x = "Tree Height (cm)",
+    y = "Predicted Probability of Nest Occurrence") +
+  # scale
+  scale_y_continuous(labels = scales::percent) +
+  # adjusting the theme
+  theme_classic() +
+  # removing the legend and editing text
+  theme(
+    legend.position = "none",
+    strip.text = element_text(face = "italic", size = 11),
+    axis.title = element_text(size = 12))
+```
+
+
 
