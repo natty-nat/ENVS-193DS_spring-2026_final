@@ -11,6 +11,7 @@ execute:
 ---
 
 # Link GitHub repo
+
 https://github.com/natty-nat/ENVS-193DS_spring-2026_final
 
 # Set up
@@ -29,25 +30,26 @@ nest <- read_csv(here("data", "nest_data_final.csv"))
 
 # Problem 1
 
-## 1a. 
+## 1a.
 
-In part 1 they used binary/ logistic regression. 
+In part 1 they used binary/ logistic regression.
 
-In part 2 they used a Chi-Squared test for independence. 
+In part 2 they used a Chi-Squared test for independence.
 
-## 1b. 
+## 1b.
 
-American Avocet microhabitat use is determined by the distance to the water's edge. 
+American Avocet microhabitat use is determined by the distance to the water's edge.
 
 The shore birds American Avocet, Foster's Tern, and Black-necked Stilt, have preferences for certain habitats over others.
 
-## 1c. 
+## 1c.
 
-An additional variable that could effect American Avocet microhabitat choice could be their prey collected by looking in the soils. This is a continuous numeric variable (count/m^2^), and it might influence habitat use because with limited prey the carrying capacity is lower (less food), and vice versa. 
+An additional variable that could effect American Avocet microhabitat choice could be their prey collected by looking in the soils. This is a continuous numeric variable (count/m^2^), and it might influence habitat use because with limited prey the carrying capacity is lower (less food), and vice versa.
 
 # Problem 2
 
-## 2a. 
+## 2a.
+
 ```{r}
 #| label: cleaning-nest-data
 # creating new object called "nests_clean" from "nest" data frame
@@ -75,16 +77,21 @@ nests_clean |>
   sample_n(10)
 ```
 
-## 2b. 
+## 2b.
 
-The 1 and 0 in the column "case_control" tell the reader whether or not the tree contained a nest. The 1s are affermative for nest, where the 0s show that there was no nest. 
+The 1 and 0 in the column "case_control" tell the reader whether or not the tree contained a nest. The 1s are affermative for nest, where the 0s show that there was no nest.
 
-## 2c. 
+## 2c.
 
-Ant species is a categorical variable with 3 levels. This could influence the probability of nest occurrence depending on the type of ant species, and how aggressive they might be to the nesting birds. I found this information  
+Ant species is a categorical variable with 3 levels. This could influence the probability of nest occurrence depending on the type of ant species, and how aggressive they might be to the nesting birds. I found this information
 
 Tree height is a continuous numerical value measured in cm. Tree height could influence the probability of nest occurrence because taller trees are more likely to have nests. I found this
 
-## 2d. 
+## 2d.
 
+| Model Number | Model Type | Formula | Model Description |
+|----|----|----|----|
+| Model 1 | Additive GLM | case_control \~ height_cm + scientific_name | Looking at the independent effect of tree height and ant species on nesting probability using logistic regression. |
+| Model 2 | Interactive GLM | case_control \~ height_cm \* scientific_name | Looking at whether there is an effect of tree height on nesting probability changes with ant species present using logistic regression. |
 
+: Table of models
