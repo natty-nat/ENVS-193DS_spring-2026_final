@@ -236,15 +236,64 @@ An appropriate analysis of amount of sleep (continuous numeric variable in hours
 ```{r}
 #| label: diagnostic-plots-to-check-assumptions
 # making new object withe data of interest; satisfaction and amount of sleep from personal data
-workout_model <- lm(satisfaction ~ amount_of_sleep, data = personal_clean)
+workout_model <- lm(satisfaction ~ sleep_hours, data = personal_clean)
 # base R residuals
 par(mfrow = c(2,2))
 plot(workout_model)
 ```
 
 ```{r}
-#| label: Running analysis
+#| label: running-analysis
 # displaying statistical summary of linear regression
 summary(workout_model)
 ```
+
+## 3d. 
+```{r}
+#| label: visualization-of-linear-regression
+personal_preds <- ggpredict(workout_model, 
+                            terms = "sleep_hours")
+#base layer: ggplot 
+ggplot() +
+  # second layer: geom_point to show underlying data with personal_clean data
+  geom_point( data = personal_clean, 
+       aes(x = sleep_hours, 
+       y = satisfaction), 
+       fill = "orchid1",
+       size = 4,
+       stroke = 1,
+       shape = 21) +
+  # third layer: geom_ribbon to show CI
+ # using predictions data frame
+ geom_ribbon(data = personal_preds,
+             aes(x = x,
+                 y = predicted, 
+                 ymin = conf.low,
+                 ymax = conf.high),
+             fill = "cornflowerblue",
+             alpha = 0.1) +
+  # third layer: line representing model predictions
+  geom_line(data = personal_preds,
+            aes(x = x,
+                y = predicted),
+            color = "cornflowerblue",
+            linewidth = 1) +
+  # adding axes titles and titles!
+  labs(
+    x = "Amount of Sleep (Hours)",
+    y = "Workout Satisfaction Score (1-5)",
+    title = "Workout Satisfaction Predicted by Sleep Duration") +
+  # changing theme
+  theme_classic() +
+  # removing grid lines, bolding title, and changing axes text
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(face = "bold", size = 13, hjust = 0.5),
+    axis.title = element_text(face = "plain", size = 11))
+```
+
+## 3e. 
+Figure 2. Less sleep is associated with lower workout satisfaction. Data collected from workouts taken place in the time period 4-20-2026 to 5-27-2026 (Data accessed 05-28-2026).
+Orchid points represent individual observations of amount of sleep (hours) (total n = 30) plotted against workout satisfaction score (1-5). Cornflower blue, thin line represents the linear regression model prediction for workout satisfaction given amount of sleep. Thick, transparent, cornflower blue ribbon represents 95% confidence interval of linear regression model. 
 
