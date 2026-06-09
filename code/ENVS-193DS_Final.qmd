@@ -23,6 +23,8 @@ library(janitor) # cleaning data frames
 library(here) # file/folder organization
 library(readxl) # reading .xlsx files
 library(ggeffects)
+# storing nest data as object "nest"
+nest <- read_csv(here("data", "nest_data_final.csv"))
 ```
 
 # Problem 1
@@ -44,5 +46,6 @@ The shore birds American Avocet, Foster's Tern, and Black-necked Stilt, have pre
 An additional variable that could effect American Avocet microhabitat choice could be their prey collected by looking in the soils. This is a continuous numeric variable (count/m^2^), and it might influence habitat use because with limited prey the carrying capacity is lower (less food), and vice versa. 
 
 # Problem 2
+
 
 
