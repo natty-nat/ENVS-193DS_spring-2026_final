@@ -189,16 +189,16 @@ max_height_data <- data.frame(
   height_cm = c(600, 600, 600),
   scientific_name = factor(c("Crematogaster sjostedti", "Crematogaster mimosae", "Crematogaster nigriceps"),
                            levels = c("Crematogaster sjostedti", "Crematogaster mimosae", "Crematogaster nigriceps")))
+# using ggpredict to get model predictions
+predictions_at_600 <- ggpredict(model_intereactive, 
+                                terms = "scientific_name", 
+                                condition = c(tree_height_cm = 600))
 
-# Calculate predicted probabilities with standard errors
-predicted_at_600 <- predict(model_intereactive, 
-                            newdata = max_height_data, 
-                            type = "response")
-
-# Bind predictions to the labels for clear reading
-cbind(max_height_data, 
-      predicted_probability = predicted_at_600)
+# displaying table!
+print(predictions_at_600)
 ```
 
-
+## 2k. 
+Our model demonstrates that tree height and species of ant significantly interact to dictate birds nesting choices. When using the model to predict nest occurrence in the maximum measured height of the trees (600 cm), there was a high chance of it being nested when occupied by Crematogaster nigriceps (0.94 probability, 95% CI[0.55, 1.00]), and low chances if occupied by Crematogaster mimosae (0.19 probability, 95% CI [0.14, 0.25]) or Crematogaster sjostedti (0.05 prbability, 95% CI[0.01, 0.36]). Tree height does play a role, but ant species appears to have a stronger affect on nesting probability seen from the predicted lines. 
+This effect is due to the behavior of the ants. Both Crematogaster nigriceps and Crematogaster mimosae are aggressive, defenssive species, whereas Crematogaster sjostedti tend to be less aggressive. This means that these ants will protect the bird and their young from predators. In addition, C. nigriceps "prune" the trees, which lowers the chance of interactions with other trees. 
 
