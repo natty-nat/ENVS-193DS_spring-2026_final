@@ -10,6 +10,9 @@ execute:
   warning: false # use this to make sure warnings don't show up
 ---
 
+# Link GitHub repo
+https://github.com/natty-nat/ENVS-193DS_spring-2026_final
+
 # Set up
 
 ```{r}

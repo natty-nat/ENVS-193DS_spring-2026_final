@@ -1,0 +1,24 @@
+Metadata for Lujan, Nielsen, et al. 2023 Biotropica.
+
+Data files:
+
+nest_data_final.csv: CSV file containing data required to reproduce first analysis
+	alive: whether a tree is alive (A) or dead (D)
+	height_cm: height, in centimeters
+	diameter_mm: diameter at 15 cm, in millimeters
+	case_control: whether a tree contained a nest (1) or was an "available" tree for comparison (0)
+	case: individual identifier for a nest tree and nearby "available" trees
+	canopy_width: axis 1 of canopy measurements, in meters
+	canopy_length: axis 2 of canopy measurements, in meters
+	canopy_area: elliptical area of the canopy of a tree, in square meters
+	bird_species: gray-headed sparrow (GHS), gray-capped social weaver (GCSW), superb starling (STAR), or unknown cup nester (UNK)
+	ant_species: Tetraponera penzigi (TP), Crematogaster sjostedti (AB), Crematogaster mimosae (RRB), or Crematogaster nigriceps (BBR)
+
+nest_data_tmp: CSV file containing data required to reproduce second analysis
+	height_m: height, in centimeters
+	case_control: whether a tree contained a nest (1) or was an "available" tree for comparison (0)
+	ant_species: Tetraponera penzigi (TP), Crematogaster sjostedti (AB), Crematogaster mimosae (RRB), or Crematogaster nigriceps (BBR)
+
+Code files:
+
+bird_nest_analyses_final: R script containing all code required to reproduce the results in the paper
