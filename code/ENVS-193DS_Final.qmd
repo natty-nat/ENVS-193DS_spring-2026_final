@@ -90,8 +90,30 @@ Tree height is a continuous numerical value measured in cm. Tree height could in
 ## 2d.
 
 | Model Number | Model Type | Formula | Model Description |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Model 1 | Additive GLM | case_control \~ height_cm + scientific_name | Looking at the independent effect of tree height and ant species on nesting probability using logistic regression. |
 | Model 2 | Interactive GLM | case_control \~ height_cm \* scientific_name | Looking at whether there is an effect of tree height on nesting probability changes with ant species present using logistic regression. |
 
 : Table of models
+
+## 2e. 
+```{r}
+#| label: model_1
+#| include: false
+#running model 1: additive logistic regression
+model_additive <- glm(case_control ~ height_cm + scientific_name, 
+                      data = nests_clean,
+                      family = binomial)
+```
+
+```{r}
+#| label: model_2
+#| include: false
+# running model 2: interactive logistic regression
+model_intereactive <- glm(case_control ~ height_cm * scientific_name, 
+                      data = nests_clean,
+                      family = binomial)
+```
+
+
+
