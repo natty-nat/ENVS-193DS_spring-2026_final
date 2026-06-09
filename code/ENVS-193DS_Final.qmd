@@ -202,3 +202,17 @@ print(predictions_at_600)
 Our model demonstrates that tree height and species of ant significantly interact to dictate birds nesting choices. When using the model to predict nest occurrence in the maximum measured height of the trees (600 cm), there was a high chance of it being nested when occupied by Crematogaster nigriceps (0.94 probability, 95% CI[0.55, 1.00]), and low chances if occupied by Crematogaster mimosae (0.19 probability, 95% CI [0.14, 0.25]) or Crematogaster sjostedti (0.05 prbability, 95% CI[0.01, 0.36]). Tree height does play a role, but ant species appears to have a stronger affect on nesting probability seen from the predicted lines. 
 This effect is due to the behavior of the ants. Both Crematogaster nigriceps and Crematogaster mimosae are aggressive, defenssive species, whereas Crematogaster sjostedti tend to be less aggressive. This means that these ants will protect the bird and their young from predators. In addition, C. nigriceps "prune" the trees, which lowers the chance of interactions with other trees. 
 
+# Problem 3
+
+## 3a. 
+
+In homework 2, I visualized the relationships between cardio vs. workout length and length of workout vs. workout satisfaction, and they're presented on graphs. In homework 3, I visualized the relationship between amount of sleep and satisfaction with workout using circles of varying size and color without a graph. 
+
+I noticed a similar color pallet between all my visualizations. I use lots of pink, purples, and blues generally. 
+
+I see that my satisfaction with my workout does increase with the more sleep I get, but other factors (workout type, length of workout, etc.) do not impact this vary much. These aren't different between visualizations because the data didn't show different trends. 
+
+The feedback I got was to not over complicate the affective visualization with too many variables. I implemented this by taking out variables that were superfluous (such as time of meal before workout). 
+
+## 3b. 
+
