@@ -27,6 +27,20 @@ library(ggeffects)
 library(DHARMa)
 # storing nest data as object "nest"
 nest <- read_csv(here("data", "nest_data_final.csv"))
+personal_clean <- read_csv(
+  here("data", "ENVS 193DS- Personal Data - Sheet1.csv"), 
+  # skipping the first 2 messed up rows
+  skip = 2) |> 
+  # dropping the first empty column
+  select(-1) |> 
+  # cleaning the names
+  clean_names() |> 
+ # converting sleep to a graphable value
+  mutate(
+    sleep_hours = 
+      hour(hms(amount_of_sleep)) + (minute(hms(amount_of_sleep)) / 60),
+    # converting the column "satisfaction" to numbers
+    satisfaction = as.numeric(satisfaction))
 ```
 
 # Problem 1
@@ -215,4 +229,22 @@ I see that my satisfaction with my workout does increase with the more sleep I g
 The feedback I got was to not over complicate the affective visualization with too many variables. I implemented this by taking out variables that were superfluous (such as time of meal before workout). 
 
 ## 3b. 
+
+An appropriate analysis of amount of sleep (continuous numeric variable in hours) and how it effects satisfaction (ordinal variable, measured 1-5) with my workout is a linear regression model. This answers my initial question of "How does the amount of sleep I get effect my satisfaction with my workout?" by showing trends between my workout and the rating I gave the following workout. 
+
+## 3c. 
+```{r}
+#| label: diagnostic-plots-to-check-assumptions
+# making new object withe data of interest; satisfaction and amount of sleep from personal data
+workout_model <- lm(satisfaction ~ amount_of_sleep, data = personal_clean)
+# base R residuals
+par(mfrow = c(2,2))
+plot(workout_model)
+```
+
+```{r}
+#| label: Running analysis
+# displaying statistical summary of linear regression
+summary(workout_model)
+```
 
