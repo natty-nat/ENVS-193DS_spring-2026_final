@@ -24,3 +24,19 @@ library(here) # file/folder organization
 library(readxl) # reading .xlsx files
 library(ggeffects)
 ```
+
+# Problem 1
+
+## 1a. 
+
+In part 1 they used binary/ logistic regression. 
+
+In part 2 they used a Chi-Squared test for independence. 
+
+## 2a. 
+
+American Avocet microhabitat use is determined by the distance to the water's edge. 
+
+The shore birds American Avocet, Foster's Tern, and Black-necked Stilt, have preferences for certain habitats over others.
+
+## 2c. 
