@@ -76,8 +76,15 @@ nests_clean |>
 ```
 
 ## 2b. 
+
 The 1 and 0 in the column "case_control" tell the reader whether or not the tree contained a nest. The 1s are affermative for nest, where the 0s show that there was no nest. 
 
 ## 2c. 
+
+Ant species is a categorical variable with 3 levels. This could influence the probability of nest occurrence depending on the type of ant species, and how aggressive they might be to the nesting birds. I found this information  
+
+Tree height is a continuous numerical value measured in cm. Tree height could influence the probability of nest occurrence because taller trees are more likely to have nests. I found this
+
+## 2d. 
 
 
