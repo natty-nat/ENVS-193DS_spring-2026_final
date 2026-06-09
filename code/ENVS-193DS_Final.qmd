@@ -33,10 +33,16 @@ In part 1 they used binary/ logistic regression.
 
 In part 2 they used a Chi-Squared test for independence. 
 
-## 2a. 
+## 1b. 
 
 American Avocet microhabitat use is determined by the distance to the water's edge. 
 
 The shore birds American Avocet, Foster's Tern, and Black-necked Stilt, have preferences for certain habitats over others.
 
-## 2c. 
+## 1c. 
+
+An additional variable that could effect American Avocet microhabitat choice could be their prey collected by looking in the soils. This is a continuous numeric variable (count/m^2^), and it might influence habitat use because with limited prey the carrying capacity is lower (less food), and vice versa. 
+
+# Problem 2
+
+
