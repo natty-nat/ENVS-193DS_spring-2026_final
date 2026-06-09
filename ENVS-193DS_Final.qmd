@@ -1,0 +1,23 @@
+---
+title: "ENVS 193DS Final"
+author: "Natalie Parker"
+format: pdf
+format:
+  pdf:
+    toc: true # use this to display a table of contents
+execute:
+  message: false # use this to make sure messages don't show up
+  warning: false # use this to make sure warnings don't show up
+---
+
+# Set up
+
+```{r}
+#| label: libraries-and-data
+
+library(tidyverse) # general use
+library(janitor) # cleaning data frames
+library(here) # file/folder organization
+library(readxl) # reading .xlsx files
+library(ggeffects)
+```
