@@ -46,6 +46,32 @@ The shore birds American Avocet, Foster's Tern, and Black-necked Stilt, have pre
 An additional variable that could effect American Avocet microhabitat choice could be their prey collected by looking in the soils. This is a continuous numeric variable (count/m^2^), and it might influence habitat use because with limited prey the carrying capacity is lower (less food), and vice versa. 
 
 # Problem 2
+```{r}
+#| label: cleaning-nest-data
+# creating new object called "nests_clean" from "nest" data frame
+nests_clean <- nest |> 
+  # selecting columns of interest
+  select(case_control, height_cm, ant_species) |> 
+  # filtering to only include specific ant species
+  filter(ant_species %in% c("AB", "RRB", "BBR")) |> 
+  # making new column for scientifc names and adjusting to names to be full
+  mutate(scientific_name = case_when(
+    ant_species == "AB" ~ "Crematogaster sjostedti",
+    ant_species == "RRB" ~ "Crematogaster mimosae",
+    ant_species == "BBR" ~ "Crematogaster nigriceps"
+  )) |> 
+  # reordering the levels of ant species
+  mutate(scientific_name = factor(scientific_name, levels = c(
+    "Crematogaster sjostedti", 
+    "Crematogaster mimosae", 
+    "Crematogaster nigriceps"
+  )))
+# displaying the structure of "nests_clean"
+str(nests_clean)
+# showing 10 random rows!
+nests_clean |> 
+  sample_n(10)
+```
 
 
 
