@@ -24,6 +24,7 @@ library(janitor) # cleaning data frames
 library(here) # file/folder organization
 library(readxl) # reading .xlsx files
 library(ggeffects)
+library(DHARMa)
 # storing nest data as object "nest"
 nest <- read_csv(here("data", "nest_data_final.csv"))
 ```
@@ -115,5 +116,21 @@ model_intereactive <- glm(case_control ~ height_cm * scientific_name,
                       family = binomial)
 ```
 
+## 2f. 
+```{r}
+#| label: AIC
+# Running IAC to check scores
+AIC (model_additive, model_intereactive)
+```
 
+The best model as determined by Akaike's Information Criterion (AIC) is the interactive logistic regression model. This model has a lower AIC (237.8 compared to 258.7), which tells us there are significant changes to nesting depending on which ant species lives there in relation to tree height. 
+
+## 2g. 
+```{r}
+#| label: cheching_diaganostics
+# simulate residuals for interactive model
+sim_residuals <- simulateResiduals(fittedModel = model_intereactive, n = 250)
+# plotting diagnostics
+plot(sim_residuals)
+```
 
