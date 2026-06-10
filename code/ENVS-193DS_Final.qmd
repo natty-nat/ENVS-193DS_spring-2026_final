@@ -46,25 +46,21 @@ personal_clean <- read_csv(
 # Problem 1
 
 ## 1a.
-
 In part 1 they used binary/ logistic regression.
 
 In part 2 they used a Chi-Squared test for independence.
 
 ## 1b.
-
 American Avocet microhabitat use is determined by the distance to the water's edge.
 
 The shore birds American Avocet, Foster's Tern, and Black-necked Stilt, have preferences for certain habitats over others.
 
 ## 1c.
-
 An additional variable that could effect American Avocet microhabitat choice could be their prey collected by looking in the soils. This is a continuous numeric variable (count/m^2^), and it might influence habitat use because with limited prey the carrying capacity is lower (less food), and vice versa.
 
 # Problem 2
 
 ## 2a.
-
 ```{r}
 #| label: cleaning-nest-data
 # creating new object called "nests_clean" from "nest" data frame
@@ -93,14 +89,12 @@ nests_clean |>
 ```
 
 ## 2b.
-
 The 1 and 0 in the column "case_control" tell the reader whether or not the tree contained a nest. The 1s are affermative for nest, where the 0s show that there was no nest.
 
 ## 2c.
+Ant species is a categorical variable with 3 levels. This could influence the probability of nest occurrence depending on the type of ant species, and how aggressive they might be to the nesting birds. I found this information in the introduction, paragraph 3. 
 
-Ant species is a categorical variable with 3 levels. This could influence the probability of nest occurrence depending on the type of ant species, and how aggressive they might be to the nesting birds. I found this information
-
-Tree height is a continuous numerical value measured in cm. Tree height could influence the probability of nest occurrence because taller trees are more likely to have nests. I found this
+Tree height is a continuous numerical value measured in cm. Tree height could influence the probability of nest occurrence because taller trees are more likely to have nests. I found this information in  the methods section, paragraph 2. 
 
 ## 2d.
 
@@ -219,7 +213,6 @@ This effect is due to the behavior of the ants. Both Crematogaster nigriceps and
 # Problem 3
 
 ## 3a. 
-
 In homework 2, I visualized the relationships between cardio vs. workout length and length of workout vs. workout satisfaction, and they're presented on graphs. In homework 3, I visualized the relationship between amount of sleep and satisfaction with workout using circles of varying size and color without a graph. 
 
 I noticed a similar color pallet between all my visualizations. I use lots of pink, purples, and blues generally. 
@@ -229,7 +222,6 @@ I see that my satisfaction with my workout does increase with the more sleep I g
 The feedback I got was to not over complicate the affective visualization with too many variables. I implemented this by taking out variables that were superfluous (such as time of meal before workout). 
 
 ## 3b. 
-
 An appropriate analysis of amount of sleep (continuous numeric variable in hours) and how it effects satisfaction (ordinal variable, measured 1-5) with my workout is a linear regression model. This answers my initial question of "How does the amount of sleep I get effect my satisfaction with my workout?" by showing trends between my workout and the rating I gave the following workout. 
 
 ## 3c. 
@@ -251,6 +243,7 @@ summary(workout_model)
 ## 3d. 
 ```{r}
 #| label: visualization-of-linear-regression
+# using ggpredict to get model predictions
 personal_preds <- ggpredict(workout_model, 
                             terms = "sleep_hours")
 #base layer: ggplot 
@@ -296,4 +289,11 @@ ggplot() +
 ## 3e. 
 Figure 2. Less sleep is associated with lower workout satisfaction. Data collected from workouts taken place in the time period 4-20-2026 to 5-27-2026 (Data accessed 05-28-2026).
 Orchid points represent individual observations of amount of sleep (hours) (total n = 30) plotted against workout satisfaction score (1-5). Cornflower blue, thin line represents the linear regression model prediction for workout satisfaction given amount of sleep. Thick, transparent, cornflower blue ribbon represents 95% confidence interval of linear regression model. 
+
+## 3f. 
+It was found that amount of sleep acted as a statistically significant predictor of my satisfaction with my workout (linear regression, F(28, 1) = 5.709, R^2^ = 0.1694, p = 0.02385, $\alpha$ = 0.05). 
+Based on the model predictions, for each 1 unit increase in sleep, it's expected to have a increase of 0.3972 $\pm$ 0.1662 in workout satisfaction. Approximately 16.94% of total variance in satisfaction scores is accounted for by the moderate effect size sleep duration has (R^2^ = 0.1694). 
+
+
+
 
