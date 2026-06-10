@@ -2,7 +2,7 @@
 title: "ENVS 193DS Final"
 author: "Natalie Parker"
 format:
-  gfm:
+  pdf:
     toc: true # use this to display a table of contents
 execute:
   message: false # use this to make sure messages don't show up
@@ -11,7 +11,7 @@ execute:
 
 # Link GitHub repo
 
-https://github.com/natty-nat/ENVS-193DS_spring-2026_final
+https://github.com/natty-nat/ENVS-193DS_spring-2026_final/tree/main
 
 # Set up
 
