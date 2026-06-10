@@ -1,9 +1,8 @@
 ---
 title: "ENVS 193DS Final"
 author: "Natalie Parker"
-format: pdf
 format:
-  pdf:
+  gfm:
     toc: true # use this to display a table of contents
 execute:
   message: false # use this to make sure messages don't show up
@@ -108,7 +107,6 @@ Tree height is a continuous numerical value measured in cm. Tree height could in
 ## 2e. 
 ```{r}
 #| label: model_1
-#| include: false
 #running model 1: additive logistic regression
 model_additive <- glm(case_control ~ height_cm + scientific_name, 
                       data = nests_clean,
@@ -195,8 +193,12 @@ Data from: Lujan et al. in 2023. https://doi.org/10.5281/zenodo.8373322
 # making new object with tree height of 600 cm from 
 max_height_data <- data.frame(
   height_cm = c(600, 600, 600),
-  scientific_name = factor(c("Crematogaster sjostedti", "Crematogaster mimosae", "Crematogaster nigriceps"),
-                           levels = c("Crematogaster sjostedti", "Crematogaster mimosae", "Crematogaster nigriceps")))
+  scientific_name = factor(c("Crematogaster sjostedti", 
+                             "Crematogaster mimosae", 
+                             "Crematogaster nigriceps"),
+                           levels = c("Crematogaster sjostedti", 
+                                      "Crematogaster mimosae", 
+                                      "Crematogaster nigriceps")))
 # using ggpredict to get model predictions
 predictions_at_600 <- ggpredict(model_intereactive, 
                                 terms = "scientific_name", 
@@ -227,7 +229,8 @@ An appropriate analysis of amount of sleep (continuous numeric variable in hours
 ## 3c. 
 ```{r}
 #| label: diagnostic-plots-to-check-assumptions
-# making new object withe data of interest; satisfaction and amount of sleep from personal data
+# making new object withe data of interest; satisfaction and amount of sleep
+# from personal data
 workout_model <- lm(satisfaction ~ sleep_hours, data = personal_clean)
 # base R residuals
 par(mfrow = c(2,2))
